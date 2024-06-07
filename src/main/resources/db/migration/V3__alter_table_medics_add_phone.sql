@@ -1,0 +1,1 @@
+alter table medics add phoneNumber varchar(15) not null
