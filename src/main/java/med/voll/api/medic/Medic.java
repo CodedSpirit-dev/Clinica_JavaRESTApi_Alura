@@ -21,6 +21,7 @@ public class Medic {
     private String email;
     private String phoneNumber;
     private String document;
+    private boolean active;
     @Enumerated(EnumType.STRING)
     private Speciality speciality;
     @Embedded
@@ -31,6 +32,7 @@ public class Medic {
         this.email = dataMedicRegister.email();
         this.phoneNumber = dataMedicRegister.phoneNumber();
         this.document = dataMedicRegister.document();
+        this.active = true;
         this.speciality = dataMedicRegister.speciality();
         this.direction = new Direction(dataMedicRegister.direction());
     }
@@ -45,5 +47,9 @@ public class Medic {
         if (dataUpdateMedic.direction() != null) {
             this.direction = direction.updateData(dataUpdateMedic.direction());
         }
+    }
+
+    public void disableMedic(){
+        this.active = false;
     }
 }

@@ -39,7 +39,8 @@ public class MedicController {
      */
     @GetMapping
     public Page<DataMedicList> medicList(@PageableDefault(size = 5)  Pageable pagination) {
-        return medicRepository.findAll(pagination).map(DataMedicList::new);
+        //return medicRepository.findAll(pagination).map(DataMedicList::new);
+        return medicRepository.findByActiveTrue(pagination).map(DataMedicList::new);
     }
 
     /**
@@ -53,4 +54,23 @@ public class MedicController {
         Medic medic = medicRepository.getReferenceById(dataUpdateMedic.id());
         medic.updateData(dataUpdateMedic);
     }
+
+    /**
+     * This method is used to logically delete a 'Medic'.
+     * It takes an id as input and disables the corresponding 'Medic' in the database.
+     * @param id This is a path variable of type Long.
+     */
+    @DeleteMapping("/{id}") //Create a dynamic variable
+    @Transactional
+    public void deleteMedic(@PathVariable Long id){
+        Medic medic = medicRepository.getReferenceById(id);
+        medic.disableMedic();
+    }
+
+    /*    @DeleteMapping("/{id}") //Create a dynamic variable
+    @Transactional
+    public void deleteMedic(@PathVariable Long id){
+        Medic medic = medicRepository.getReferenceById(id);
+        medicRepository.delete(medic);
+    }*/
 }
