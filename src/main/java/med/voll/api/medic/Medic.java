@@ -34,4 +34,16 @@ public class Medic {
         this.speciality = dataMedicRegister.speciality();
         this.direction = new Direction(dataMedicRegister.direction());
     }
+
+    public void updateData(DataUpdateMedic dataUpdateMedic) {
+        if (dataUpdateMedic.name() != null) {
+            this.name = dataUpdateMedic.name();
+        }
+        if (dataUpdateMedic.document() != null) {
+            this.document = dataUpdateMedic.document();
+        }
+        if (dataUpdateMedic.direction() != null) {
+            this.direction = direction.updateData(dataUpdateMedic.direction());
+        }
+    }
 }

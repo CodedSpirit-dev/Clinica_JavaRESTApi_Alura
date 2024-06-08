@@ -1,12 +1,13 @@
 package med.voll.api.medic;
 
 public record DataMedicList(
+        Long id,
         String name,
         String speciality,
         String document,
         String email
 ) {
     public DataMedicList(Medic medic) {
-        this(medic.getName(), medic.getSpeciality().toString(), medic.getDocument(), medic.getEmail());
+        this(medic.getId() ,medic.getName(), medic.getSpeciality().toString(), medic.getDocument(), medic.getEmail());
     }
 }

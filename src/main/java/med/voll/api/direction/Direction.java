@@ -27,4 +27,13 @@ public class Direction {
         this.number = direction.number();
         this.complement = direction.complement();
     }
+
+    public Direction updateData(DataDirection direction) {
+        this.street = direction.street();
+        this.district = direction.district();
+        this.city = direction.city();
+        this.number = direction.number();
+        this.complement = direction.complement();
+        return this;
+    }
 }
