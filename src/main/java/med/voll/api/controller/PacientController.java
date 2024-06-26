@@ -29,15 +29,13 @@ public class PacientController {
         var pacient = new Pacient(dataPacient);
         repository.save(pacient);
         var uri = uriComponentsBuilder.path("/pacients/{id}").buildAndExpand(pacient.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DataPacient(pacient));
+        return ResponseEntity.created(uri).body(new DataPacientDetails(pacient));
     }
 
     @GetMapping
     public ResponseEntity<Page<DataPacientList>> listPacients(@PageableDefault(size = 10, sort = {"name"}) Pageable pagination) {
-        var page = repository.findAllByActiveTrue(pagination).map(DataListPacient::new);
+        var page = repository.findByActiveTrue(pagination).map(DataPacientList::new);
         return ResponseEntity.ok(page);
-    }
-
     }
 
     @GetMapping
@@ -45,7 +43,7 @@ public class PacientController {
     public ResponseEntity updatePacient(@RequestBody @Valid DataPacientUpdate dataPacient) {
         var pacient = repository.getReferenceById(id);
         pacient.updateData(dataPacient);
-        return ResponseEntity.ok(new DataDetailsPacient(pacient));
+        return ResponseEntity.ok(new DataPacientDetails(pacient));
     }
 
     @DeleteMapping("/{id}")
@@ -60,6 +58,6 @@ public class PacientController {
     @Transactional
     public ResponseEntity detailsPacient(@PathVariable Long id) {
         var pacient = repository.getReferenceById(id);
-        return ResponseEntity.ok(new DataDetailsPacient(pacient));
+        return ResponseEntity.ok(new DataPacientDetails(pacient));
     }
 }

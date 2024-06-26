@@ -51,7 +51,4 @@ public class Pacient {
     public void disable() {
         this.active = false;
     }
-
-
-
 }
