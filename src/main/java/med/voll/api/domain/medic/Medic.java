@@ -37,15 +37,15 @@ public class Medic {
         this.direction = new Direction(dataMedicRegister.direction());
     }
 
-    public void updateData(DataUpdateMedic dataUpdateMedic) {
-        if (dataUpdateMedic.name() != null) {
-            this.name = dataUpdateMedic.name();
+    public void updateData(DataMedicUpdate dataMedicUpdate) {
+        if (dataMedicUpdate.name() != null) {
+            this.name = dataMedicUpdate.name();
         }
-        if (dataUpdateMedic.document() != null) {
-            this.document = dataUpdateMedic.document();
+        if (dataMedicUpdate.document() != null) {
+            this.document = dataMedicUpdate.document();
         }
-        if (dataUpdateMedic.direction() != null) {
-            this.direction = direction.updateData(dataUpdateMedic.direction());
+        if (dataMedicUpdate.direction() != null) {
+            this.direction = direction.updateData(dataMedicUpdate.direction());
         }
     }
 

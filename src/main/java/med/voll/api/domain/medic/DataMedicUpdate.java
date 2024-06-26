@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.api.domain.direction.DataDirection;
 
-public record DataUpdateMedic(
+public record DataMedicUpdate(
         @NotNull //Como es long se usa este, los string usan notblank
         Long id,
         String name,

@@ -62,18 +62,18 @@ public class MedicController {
 
     /**
      * This method is used to update a 'Medic'.
-     * It takes a DataUpdateMedic object as input and updates the corresponding 'Medic' in the database.
+     * It takes a DataMedicUpdate object as input and updates the corresponding 'Medic' in the database.
      * It returns a ResponseEntity with the updated Medic's data.
      *
-     * @param dataUpdateMedic This is a request body parameter of type DataUpdateMedic.
+     * @param dataMedicUpdate This is a request body parameter of type DataMedicUpdate.
      * @return ResponseEntity This returns a ResponseEntity with the updated Medic's data.
      */
     @PutMapping
     @Transactional
     // Transaction is committed at this level, if there's an error into transaction it is going to execute a rollback
-    public ResponseEntity updateMedic(@RequestBody @Valid DataUpdateMedic dataUpdateMedic) { // The request body is used to take the parameters
-        Medic medic = medicRepository.getReferenceById(dataUpdateMedic.id());
-        medic.updateData(dataUpdateMedic);
+    public ResponseEntity updateMedic(@RequestBody @Valid DataMedicUpdate dataMedicUpdate) { // The request body is used to take the parameters
+        Medic medic = medicRepository.getReferenceById(dataMedicUpdate.id());
+        medic.updateData(dataMedicUpdate);
         return ResponseEntity.ok(new DataMedicResponse(
                 medic.getId(), medic.getName(), medic.getEmail(), medic.getPhoneNumber(), medic.getSpeciality().toString(),
                 new DataDirection(medic.getDirection().getStreet(), medic.getDirection().getDistrict(), medic.getDirection().getCity(), medic.getDirection().getNumber(),
