@@ -33,7 +33,7 @@ public class ScheduleConsultationService {
             throw new IntegrityValidator("The pacient ID does not exist");
         }
 
-        if (data.idMedic() != null && !medicRepository.findById(data.idMedic()).isPresent()) {
+        if (data.idMedic() != null && !medicRepository.existsById(data.idMedic())) {
             throw new IntegrityValidator("The medic ID does not exist");
         }
 

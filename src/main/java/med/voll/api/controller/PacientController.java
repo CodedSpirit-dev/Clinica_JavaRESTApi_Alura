@@ -41,7 +41,7 @@ public class PacientController {
     @GetMapping
     @Transactional
     public ResponseEntity updatePacient(@RequestBody @Valid DataPacientUpdate dataPacient) {
-        var pacient = repository.getReferenceById(id);
+        var pacient = repository.getReferenceById(dataPacient.id());
         pacient.updateData(dataPacient);
         return ResponseEntity.ok(new DataPacientDetails(pacient));
     }
