@@ -16,7 +16,7 @@ public class PacientsWithoutConsultation implements ConsultationValidator{
         var firstDateTime = data.dateTime().withHour(7);
         var lastDateTime = data.dateTime().withHour(18);
 
-        var pacientWithConsultation = repository.existsByPacientIdAndDateTimeBetween(data.idPacient(), firstDateTime, lastDateTime);
+        var pacientWithConsultation = repository.existsByPacientIdAndDateBetween(data.idPacient(), firstDateTime, lastDateTime);
 
         if (pacientWithConsultation) {
             throw new ValidationException("The pacient has an appointment in this time");

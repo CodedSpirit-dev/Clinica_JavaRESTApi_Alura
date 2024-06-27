@@ -3,7 +3,6 @@ package med.voll.api.domain.consultation.validations;
 import jakarta.validation.ValidationException;
 import med.voll.api.domain.consultation.ConsultationRepository;
 import med.voll.api.domain.consultation.DataScheduleConsultation;
-import med.voll.api.infra.errors.IntegrityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,7 @@ public class MedicsWithConsultation implements ConsultationValidator{
         if(data.idMedic() == null)
             return;
 
-        var medicWithConsultation = repository.existByMedicIdAndDateTime(data.idMedic(), data.dateTime());
+        var medicWithConsultation = repository.existsByMedicIdAndDate(data.idMedic(), data.dateTime());
 
         if(medicWithConsultation)
             throw new ValidationException("The medic has an appointment in this time");

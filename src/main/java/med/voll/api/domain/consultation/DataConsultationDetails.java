@@ -13,7 +13,7 @@ public record DataConsultationDetails(
                 consultation.getId(),
                 consultation.getPacient().getId(),
                 consultation.getMedic().getId(),
-                consultation.getDateTime()
+                consultation.getDate()
         );
     }
 }

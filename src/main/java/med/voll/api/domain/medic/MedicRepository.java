@@ -19,7 +19,7 @@ public interface MedicRepository extends JpaRepository<Medic, Long> {
             and
             m.id not in(
                 select c.medic.id from Consultation c
-                where c.dateTime = :localDateTime
+                where c.date = :localDateTime
             )
             order by rand()
             limit 1

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface ConsultationRepository extends  JpaRepository<Consultation, Long> {
-    Boolean existsByPacientIdAndDateTimeBetween(Long pacientId, LocalDateTime firstDateTime, LocalDateTime lastDateTime);
+    Boolean existsByPacientIdAndDateBetween(Long pacientId, LocalDateTime firstDateTime, LocalDateTime lastDateTime);
 
-    Boolean existByMedicIdAndDateTime(Long medicId, LocalDateTime date);
+    Boolean existsByMedicIdAndDate(Long medicId, LocalDateTime date);
 }
